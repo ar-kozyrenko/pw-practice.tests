@@ -1,0 +1,15 @@
+{
+  "name": "qa-dojo-practice-pw",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Artyom Kozyrenko",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.30",
+    "is-even-check-new": "^1.0.1"
+  }
+}
