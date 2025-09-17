@@ -1,3 +1,5 @@
+//test PR updates
+
 # Practice Playwright Project
 
 This repository contains a comprehensive set of Playwright tests and practice scripts for web automation. The project is designed to help you learn, experiment, and master Playwright features, including selectors, page object models, custom test methods, and more.
