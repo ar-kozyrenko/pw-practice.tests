@@ -6,6 +6,7 @@ import { SignUpPage } from './SignUpPage'
 import { BasicPage } from './BasicPage'
 import { LoginPage } from './LogInPage'
 import { CreateArticlePage } from './CreateArticlePage'
+import { DemoArticle } from './DemoArticlePage'
 import { TIMEOUT } from 'dns'
 
 
@@ -15,18 +16,17 @@ test('sign up positive',
         await SignUpPage.signUpAction(page)
         await expect(BasicPage.headerLocator(page)).toContainText(SignUpPage.testUserName)
     }
-),
+)
 
 
 
-    test('log in positive',
-        { tag: ['@regression', '@smoke'] },
-        async ({ page }) => {
-            await LoginPage.logInAction(page)
-            await expect(page.locator('ul[data-qa-id="site-nav"] a[href="/@test002/"]')).toBeVisible()
-
-        }
-    )
+test('log in positive',
+    { tag: ['@regression', '@smoke'] },
+    async ({ page }) => {
+        await LoginPage.logInAction(page)
+        await expect(page.locator('ul[data-qa-id="site-nav"] a[href="/@test002/"]')).toBeVisible()
+    }
+)
 
 test('renavigation to the home page after clicking the logo',
     { tag: '@regression' },
@@ -125,3 +125,32 @@ test('log in with blank password',
     }
 )
 
+// test('article with demo tag is in place',
+//     { tag: ['@smoke', '@regression'] },
+//     async ({ page }) => {
+//         await page.goto('https://demo.learnwebdriverio.com/')
+//         await LoginPage.logInAction(page)
+//         await page.locator('a[href="/my-feed"]').click()
+//         await expect(page.locator('[data-qa-type="article-list"] .article-preview', { hasText: "No articles are here... yet." })).toBeVisible()
+//         await page.locator('[data-qa-type="feed-tab"] [href="/"]').click()
+//         await page.locator('[href="/tag/demo"]').click()
+//         await page.locator('[data-qa-type="article-preview"]:first-of-type [data-qa-type="preview-title"]').click()
+//         await expect(page.locator('[href="/tag/demo"]')).toBeVisible()
+
+//     })
+
+
+test('article with demo tag is in place',
+    { tag: ['@smoke', '@regression'] },
+    async ({ page }) => {
+        const demoArticle = new DemoArticle(page)
+        await page.goto('https://demo.learnwebdriverio.com/')
+        await LoginPage.logInAction(page)
+        await demoArticle.openMyFeed()
+        await demoArticle.noArticlesHereYet()
+        await demoArticle.openGlobalFeed()
+        await demoArticle.openDemoTag()
+        await demoArticle.openTheFirstArticleWithDemoTag()
+        await demoArticle.verifyDemoTagIsVisible()
+    }
+)

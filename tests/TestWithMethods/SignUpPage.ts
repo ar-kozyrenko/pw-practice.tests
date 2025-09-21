@@ -3,10 +3,10 @@ import { test, expect, Page } from '@playwright/test'
 export const SignUpPage = {
     signUpPage: 'https://demo.learnwebdriverio.com/register',
     
-    signUpTestUserEmail: 'test003@mail.com',
+    signUpTestUserEmail: 'test002@mail.com',
     testUserPassword: '123321',
-    testUserName: 'test003',
-    LoginTestUserEmail: 'test003@mail.com',
+    testUserName: 'test002',
+    LoginTestUserEmail: 'test002@mail.com',
 
     usernameFieldLocator(page: Page) {
         return page.locator('input[placeholder="Username"]')
