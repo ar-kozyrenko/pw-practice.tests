@@ -16,19 +16,24 @@ jobs:
           node-version: '18'
           
       - name: Install dependencies
-        run: |
-          npm install
-          npm install -D @playwright/test
+        run: npm ci
         
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-        
+      # For API tests, we don't need browsers
       - name: Run API tests
         run: |
           echo "Running API tests from getArticlesApi.spec.ts"
-          mkdir -p playwright-report
-          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html
-          ls -la playwright-report
+          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html --browser=none
+          
+      - name: Check test results
+        if: always()
+        run: |
+          if [ -d "playwright-report" ]; then
+            echo "Test report generated successfully"
+            ls -la playwright-report
+          else
+            echo "No test report found"
+            exit 1
+          fi
         
       - name: Upload test results
         if: always() # Upload results even if tests fail
