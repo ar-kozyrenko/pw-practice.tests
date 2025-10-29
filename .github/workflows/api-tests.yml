@@ -18,11 +18,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+        
       # For API tests, we don't need browsers
       - name: Run API tests
         run: |
           echo "Running API tests from getArticlesApi.spec.ts"
-          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html --browser=none
+          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html
           
       - name: Check test results
         if: always()
