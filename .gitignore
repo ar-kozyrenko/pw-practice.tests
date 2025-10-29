@@ -35,5 +35,4 @@ build/
 Thumbs.db
 
 # Ignore package-lock and yarn lock if not used
-package-lock.json
 yarn.lock
