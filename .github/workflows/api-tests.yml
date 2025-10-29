@@ -14,7 +14,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
           
       - name: Install dependencies
         run: |
@@ -27,7 +26,9 @@ jobs:
       - name: Run API tests
         run: |
           echo "Running API tests from getArticlesApi.spec.ts"
+          mkdir -p playwright-report
           npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html
+          ls -la playwright-report
         
       - name: Upload test results
         if: always() # Upload results even if tests fail
