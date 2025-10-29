@@ -1,4 +1,9 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices    trace: 'on-first-retry',
+    headless: process.env.CI ? true : false, // headless in CI, headed locally
+    navigationTimeout: 30000,
+    actionTimeout: 15000,
+    testIdAttribute: 'data-testid',
+    viewport: { width: 1280, height: 720 }, from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -14,11 +19,11 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /* Run tests in parallel on CI */
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -29,7 +34,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: process.env.CI ? true : false, // headless in CI, headed locally
+    headless: process.env.CI ? true : false,
+    navigationTimeout: 30000,
+    actionTimeout: 15000,
+    viewport: { width: 1280, height: 720 }
   },
 
   /* Configure projects for major browsers */

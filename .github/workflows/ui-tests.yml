@@ -27,7 +27,7 @@ jobs:
           CI: true
         run: |
           echo "Running UI tests from conduitWithMethods.spec.ts"
-          npx playwright test tests/TestWithMethods/conduitWithMethods.spec.ts --reporter=html
+          npx playwright test tests/TestWithMethods/conduitWithMethods.spec.ts --reporter=html --max-failures=5
           
       - name: Check test results
         if: always()
