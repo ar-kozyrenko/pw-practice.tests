@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://demo.learnwebdriverio.com",
+      "localStorage": [
+        {
+          "name": "id_token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZWE0Yzc0ZGI0MTIyYTUwNGYzOWI0ZSIsInVzZXJuYW1lIjoidGVzdDAwMSIsImV4cCI6MTc2NTM2OTQ2MSwiaWF0IjoxNzYwMTg1NDYxfQ.4CO7Ivw9uJ10lk-xOC5gZIiT3i0wcKsEST_bQlLy1aE"
+        }
+      ]
+    }
+  ]
+}
