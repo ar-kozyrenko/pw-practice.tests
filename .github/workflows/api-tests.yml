@@ -17,7 +17,9 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install
+          npm install -D @playwright/test
         
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
@@ -25,16 +27,14 @@ jobs:
       - name: Run API tests
         run: |
           echo "Running API tests from getArticlesApi.spec.ts"
-          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts
+          npx playwright test tests/TestWithMethods/getArticlesApi.spec.ts --reporter=html
         
       - name: Upload test results
         if: always() # Upload results even if tests fail
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ github.run_number }}
-          path: |
-            playwright-report/
-            test-results/
+          path: playwright-report
           retention-days: 30
 
       - name: Print test summary
