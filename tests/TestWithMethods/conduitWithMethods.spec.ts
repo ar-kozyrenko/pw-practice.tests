@@ -1,8 +1,6 @@
 
-import { expect } from '@playwright/test'
-//import { test } from '../TestWithMethods/fixtures'
-import { test } from '../TestWithMethods/fixtureBasic'
-
+import { expect } from '@playwright/test';
+import { test } from '../TestWithMethods/fixtureBasic';
 
 test.describe('SignUp', () => {
     test('sign up positive',

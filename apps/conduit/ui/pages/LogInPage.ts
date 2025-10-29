@@ -17,9 +17,9 @@ public errorMsgPasswordLocator: Locator
 loginPageUrl = 'https://demo.learnwebdriverio.com/login'
     
     public testUser = {
-    email: 'test002@mail.com',
+    email: 'test001@mail.com',
     password: '123321',
-    userName: 'test002'
+    userName: 'test001'
     }
 
 

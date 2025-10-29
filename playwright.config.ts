@@ -1,9 +1,4 @@
-import { defineConfig, devices    trace: 'on-first-retry',
-    headless: process.env.CI ? true : false, // headless in CI, headed locally
-    navigationTimeout: 30000,
-    actionTimeout: 15000,
-    testIdAttribute: 'data-testid',
-    viewport: { width: 1280, height: 720 }, from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
