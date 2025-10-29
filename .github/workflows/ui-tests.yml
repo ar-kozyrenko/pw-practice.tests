@@ -23,6 +23,8 @@ jobs:
           npx playwright install --with-deps
         
       - name: Run UI tests
+        env:
+          CI: true
         run: |
           echo "Running UI tests from conduitWithMethods.spec.ts"
           npx playwright test tests/TestWithMethods/conduitWithMethods.spec.ts --reporter=html
